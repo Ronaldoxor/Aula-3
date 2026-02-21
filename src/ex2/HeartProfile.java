@@ -13,7 +13,7 @@ public class HeartProfile {
     private int birthYear;
 
     /** Constrói um objeto HeartProfile, com o nome e idade da pessoa e retorna a frequência cardíaca
-     * máxima e a alvo.
+     * máxima e o intervalo alvo
      *
      * @param firstName primeiro nome do paciente
      * @param lastName último nome do paciente
