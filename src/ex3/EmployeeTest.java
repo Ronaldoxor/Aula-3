@@ -32,7 +32,7 @@ public class EmployeeTest {
         System.out.print("Perfil do empregado 1: ");
         System.out.printf("%nNome do Funcionário: %s %s",employee.getFirstName(),employee.getLastName());
         System.out.printf("%nSalário Atual: R$ %.2f ",employee.getMonthlySalary());
-        System.out.printf("%nSalário com Aumento: R$ %.2f %n%n", employee.getMonthlySalaryRaise());
+        System.out.printf("%nSalário com Aumento: R$ %.2f %n%n%n", employee.getMonthlySalaryRaise());
 
         System.out.print("Perfil do empregado 2: ");
         System.out.printf("%nNome do Funcionário: %s %s",employee2.getFirstName(),employee2.getLastName());
