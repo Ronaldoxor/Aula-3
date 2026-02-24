@@ -20,33 +20,38 @@ public class HeartProfile {
      * @param birthDay dia de nascimento do paciente
      * @param birthMonth mês de nascimento do paciente
      * @param birthYear ano de nascimento do paciente
-     * @param idade idade do paciente
-     * @param freqCardMax frequência cardíaca máxima do paciente
-     * @param freqCardIdealMin frequêcia cardíaca máxima ideal do paciente
-     * @param freqCardIdealMax frequência cardíaca mínima ideal do paciente
      */
 
-    public HeartProfile(String firstName, String lastName, int birthDay, int birthMonth, int birthYear, int idade, int freqCardMax, double freqCardIdealMin, double freqCardIdealMax){
+    public HeartProfile(String firstName, String lastName, int birthDay, int birthMonth, int birthYear){
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDay = birthDay;
         this.birthMonth = birthMonth;
         this.birthYear = birthYear;
-        calculateAge(idade);
-        calculateMaxCardFreq(freqCardMax);
-        calculateIdealCardFreqMin(freqCardIdealMin);
-        calculateIdealCardFreqMax(freqCardIdealMax);
+
+        this.idade = calculateAge();
+        this.freqCardMax = calculateMaxCardFreq();
+        this.freqCardIdealMin = calculateIdealCardFreqMin();
+        this.freqCardIdealMax = calculateIdealCardFreqMax();
     }
 
-    public String getFirstName(){return FirstName;};
+    public String getFirstName(){return firstName;}
 
-    public String getLastName(){return LastName;};
+    public String getLastName(){return lastName;}
 
-    public int getBirthDay(){return birthDay;};
+    public int getBirthDay(){return birthDay;}
 
-    public int getBirthMonth(){return birthMonth;};
+    public int getBirthMonth(){return birthMonth;}
 
-    public int getBirthYear(){return birthYear;};
+    public int getBirthYear(){return birthYear;}
+
+    public int getIdade(){return idade;}
+
+    public int getFreqCardMax(){return freqCardMax;}
+
+    public double getFreqCardIdealMin(){return freqCardIdealMin;}
+
+    public double getFreqCardIdealMax(){return freqCardIdealMax;}
 
     public int calculateAge() {
 
@@ -65,21 +70,15 @@ public class HeartProfile {
     }
 
     public int calculateMaxCardFreq(){
-        int freqCardMax = 220 - idade;
-
-        return freqCardMax;
+        return 220 - idade;
     }
 
-    public int calculateIdealCardFreqMin(){
-        double freqCardIdealMin = freqCardMax * 0.5;
-
-        return freqCardIdealMin;
+    public double calculateIdealCardFreqMin(){
+        return freqCardMax * 0.5;
     }
 
-    public int calculateIdealCardFreqMax(){
-        double freqCardIdealMax = freqCardMax * 0.85;
-
-        return freqCardIdealMax;
+    public double calculateIdealCardFreqMax(){
+        return freqCardMax * 0.85;
     }
 
 }
