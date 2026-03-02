@@ -1,33 +1,29 @@
 package ex2;
 
+import ex5.Date;
+
 public class HeartProfile {
 
     private String firstName;
     private String lastName;
+    private Date birthDate;
+
     private int idade;
     private int freqCardMax;
     private double freqCardIdealMin;
     private double freqCardIdealMax;
-    private int birthDay;
-    private int birthMonth;
-    private int birthYear;
 
-    /** Constrói um objeto HeartProfile, com o nome e idade da pessoa e retorna a frequência cardíaca
-     * máxima e o intervalo alvo
+    /**
+     * Constrói um objeto HeartProfile com nome e data de nascimento
      *
      * @param firstName primeiro nome do paciente
      * @param lastName último nome do paciente
-     * @param birthDay dia de nascimento do paciente
-     * @param birthMonth mês de nascimento do paciente
-     * @param birthYear ano de nascimento do paciente
+     * @param birthDate data de nascimento
      */
-
-    public HeartProfile(String firstName, String lastName, int birthDay, int birthMonth, int birthYear){
+    public HeartProfile(String firstName, String lastName, Date birthDate){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDay = birthDay;
-        this.birthMonth = birthMonth;
-        this.birthYear = birthYear;
+        this.birthDate = birthDate;
 
         this.idade = calculateAge();
         this.freqCardMax = calculateMaxCardFreq();
@@ -35,50 +31,60 @@ public class HeartProfile {
         this.freqCardIdealMax = calculateIdealCardFreqMax();
     }
 
-    public String getFirstName(){return firstName;}
+    public String getFirstName(){
+        return firstName;
+    }
 
-    public String getLastName(){return lastName;}
+    public String getLastName(){
+        return lastName;
+    }
 
-    public int getBirthDay(){return birthDay;}
+    public Date getBirthDate(){
+        return birthDate;
+    }
 
-    public int getBirthMonth(){return birthMonth;}
+    public int getIdade(){
+        return idade;
+    }
 
-    public int getBirthYear(){return birthYear;}
+    public int getFreqCardMax(){
+        return freqCardMax;
+    }
 
-    public int getIdade(){return idade;}
+    public double getFreqCardIdealMin(){
+        return freqCardIdealMin;
+    }
 
-    public int getFreqCardMax(){return freqCardMax;}
+    public double getFreqCardIdealMax(){
+        return freqCardIdealMax;
+    }
 
-    public double getFreqCardIdealMin(){return freqCardIdealMin;}
+    private int calculateAge() {
 
-    public double getFreqCardIdealMax(){return freqCardIdealMax;}
-
-    public int calculateAge() {
-
-        int currentDay = 20;    // defina manualmente
+        int currentDay = 20;    // definido manualmente
         int currentMonth = 2;   // fevereiro
-        int currentYear = 2026; // ano atual
+        int currentYear = 2026;
 
-        int idade = currentYear - birthYear;
+        int idade = currentYear - birthDate.getYear();
 
-        if (currentMonth < birthMonth ||
-                (currentMonth == birthMonth && currentDay < birthDay)) {
+        if (currentMonth < birthDate.getMonth() ||
+                (currentMonth == birthDate.getMonth() &&
+                        currentDay < birthDate.getDay())) {
             idade--;
         }
 
         return idade;
     }
 
-    public int calculateMaxCardFreq(){
+    private int calculateMaxCardFreq(){
         return 220 - idade;
     }
 
-    public double calculateIdealCardFreqMin(){
+    private double calculateIdealCardFreqMin(){
         return freqCardMax * 0.5;
     }
 
-    public double calculateIdealCardFreqMax(){
+    private double calculateIdealCardFreqMax(){
         return freqCardMax * 0.85;
     }
-
 }

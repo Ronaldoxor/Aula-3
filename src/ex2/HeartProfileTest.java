@@ -1,9 +1,11 @@
 package ex2;
 
 import java.util.Scanner;
+import ex5.Date;
 
 public class HeartProfileTest {
     public static void main(String[] args){
+
         Scanner input = new Scanner(System.in);
 
         System.out.print("Digite o seu primeiro nome: ");
@@ -21,13 +23,30 @@ public class HeartProfileTest {
         System.out.print("Digite o seu dia de nascimento: ");
         int birthDay = input.nextInt();
 
-        HeartProfile heartProfile = new HeartProfile(firstName,lastName,birthDay,birthMonth,birthYear);
+        // Criando objeto Date
+        Date birthDate = new Date(birthDay, birthMonth, birthYear);
+
+        // Criando HeartProfile com Date
+        HeartProfile heartProfile =
+                new HeartProfile(firstName, lastName, birthDate);
 
         System.out.println("\n--- Perfil do Coração do Usuário ---");
-        System.out.printf("Nome Completo: %s %s",heartProfile.getFirstName(),heartProfile.getLastName());
-        System.out.printf("%nData de Nascimento: %d/%d/%d ",heartProfile.getBirthDay(),heartProfile.getBirthMonth(),heartProfile.getBirthYear());
-        System.out.printf("%nIdade: %d ",heartProfile.getIdade());
-        System.out.println("Frequência Cardíaca Máxima:" + heartProfile.getFreqCardMax());
-        System.out.printf("Frequência Cardíaca Ideal: %.0f - %.0f ", heartProfile.getFreqCardIdealMin(), heartProfile.getFreqCardIdealMax());
+
+        System.out.printf("Nome Completo: %s %s",
+                heartProfile.getFirstName(),
+                heartProfile.getLastName());
+
+        System.out.printf("%nData de Nascimento: %s",
+                heartProfile.getBirthDate().displayDate());
+
+        System.out.printf("%nIdade: %d",
+                heartProfile.getIdade());
+
+        System.out.printf("%nFrequência Cardíaca Máxima: %d",
+                heartProfile.getFreqCardMax());
+
+        System.out.printf("%nFrequência Cardíaca Ideal: %.0f - %.0f",
+                heartProfile.getFreqCardIdealMin(),
+                heartProfile.getFreqCardIdealMax());
     }
 }
